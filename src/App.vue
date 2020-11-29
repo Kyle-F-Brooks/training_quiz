@@ -1,7 +1,11 @@
 <template>
   <div id="app">
     <!-- Input each component required on page -->
-    <Header />
+    <Header 
+      :numCorrect="numCorrect"
+      :numAns="numAns"
+    />
+
     <b-container class="bv-example-row">
       <b-row>
         <b-col sm="6" offset="3">
@@ -9,6 +13,7 @@
             v-if="questions.length"
             :currentQuestion="questions[index]"
             :next="next"
+            :increment="increment"
           />
         </b-col>
       </b-row>
@@ -30,12 +35,20 @@ export default {
   data() {
     return {
       questions: [],
-      index: 0
+      index: 0,
+      numCorrect: 0,
+      numAns: 0 
     }
   },
   methods: {
     next() {
       this.index++
+    },
+    increment(isCorrect) {
+      if(isCorrect) {
+        this.numCorrect++
+      }
+      this.numAns++
     }
   },
   mounted: function() {
