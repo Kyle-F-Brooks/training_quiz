@@ -7,13 +7,13 @@
 
       <hr class="my-4" />
 
-      <b-list-group 
-        v-for="(answer, index) in answers" 
-        :key="index"
-        @click.prevent="selectAnswer(index)"
-        :class="[selectedIndex === index ? 'selected' : '']"
-      >
-        <b-list-group-item>
+      <b-list-group>
+        <b-list-group-item
+          v-for="(answer, index) in answers" 
+          :key="index"
+          @click.prevent="selectAnswer(index)"
+          :class="[selectedIndex === index ? 'selected' : '']"
+        >
           {{ answer }}        
         </b-list-group-item>
       </b-list-group>
@@ -82,7 +82,7 @@ export default {
 }
 
 .selected {
-  background-color: rgb(136, 136, 238);
+  background-color: rgb(151, 151, 235);
 }
 
 .correct {
